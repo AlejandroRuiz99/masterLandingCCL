@@ -1,5 +1,4 @@
 import { SmoothScroll } from "./components/SmoothScroll";
-import { Cursor } from "./components/Cursor";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/sections/Hero";
 import { Marquee } from "./components/Marquee";
@@ -15,7 +14,6 @@ export default function App() {
   return (
     <div className="relative min-h-screen bg-ink">
       <SmoothScroll />
-      <Cursor />
       <Navbar />
       <main>
         <Hero />

@@ -22,13 +22,6 @@
     font-feature-settings: "ss01", "cv01";
   }
 
-  /* Cursor propio: ocultamos el del sistema solo en punteros finos */
-  @media (pointer: fine) {
-    body {
-      cursor: none;
-    }
-  }
-
   ::selection {
     background: #c9a84c;
     color: #0b0a07;

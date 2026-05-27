@@ -8,14 +8,17 @@ export const softSpring: Transition = {
   mass: 0.8,
 };
 
-/** Reveal con desenfoque — NO el típico fade. Entra desde abajo desenfocado. */
+/**
+ * Reveal editorial: entra desde abajo con desplazamiento amplio + fade.
+ * Solo opacity y transform (compositado en GPU) — NADA de filter:blur, que
+ * obliga a re-rasterizar cada frame y arruina la fluidez con WebGL activo.
+ */
 export const blurReveal: Variants = {
-  hidden: { opacity: 0, y: 32, filter: "blur(10px)" },
+  hidden: { opacity: 0, y: 36 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
   },
 };
 

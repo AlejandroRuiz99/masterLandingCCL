@@ -1,11 +1,16 @@
 import { LiquidMetal } from "@paper-design/shaders-react";
+import type { PaperShaderElement } from "@paper-design/shaders";
 import { cn } from "@/lib/utils";
+import { useInViewShader } from "@/lib/usePauseOffscreen";
 
 /**
  * Orbe de oro líquido (WebGL), sin aros ni biseles. El emblema CL emerge sobre
  * un centro oscurecido de forma suave, integrado de manera orgánica.
+ * Resolución capada y pausado cuando sale de viewport.
  */
 export function LiquidSeal({ className }: { className?: string }) {
+  const { ref, inView } = useInViewShader<PaperShaderElement>();
+
   return (
     <div
       className={cn("relative aspect-square", className)}
@@ -23,6 +28,7 @@ export function LiquidSeal({ className }: { className?: string }) {
 
       {/* Oro líquido calmado */}
       <LiquidMetal
+        ref={ref}
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
         shape="circle"
         colorBack="rgba(11,10,7,0)"
@@ -33,8 +39,10 @@ export function LiquidSeal({ className }: { className?: string }) {
         shiftBlue={0.04}
         distortion={0.05}
         contour={1}
-        speed={0.32}
+        speed={inView ? 0.32 : 0}
         scale={0.94}
+        minPixelRatio={1}
+        maxPixelCount={360_000}
       />
 
       {/* Centro oscurecido suave para que el emblema lea, sin aro duro */}

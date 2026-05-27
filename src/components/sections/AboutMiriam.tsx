@@ -18,8 +18,8 @@ export function AboutMiriam() {
         <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
           {/* Retrato (placeholder para el futuro vídeo) */}
           <motion.div
-            initial={{ opacity: 0, y: 30, filter: "blur(12px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 36 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={viewportOnce}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5"

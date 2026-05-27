@@ -42,9 +42,9 @@ export function Modal({ open, onClose, children }: ModalProps) {
           <motion.div
             role="dialog"
             aria-modal="true"
-            initial={{ opacity: 0, y: 24, scale: 0.97, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: 16, scale: 0.98, filter: "blur(6px)" }}
+            initial={{ opacity: 0, y: 24, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="grain relative z-10 w-full max-w-md overflow-hidden rounded-2xl border border-gold/20 bg-ink-800 shadow-[0_30px_120px_-20px_rgba(201,168,76,0.3)]"
           >

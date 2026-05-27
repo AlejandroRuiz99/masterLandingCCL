@@ -103,8 +103,8 @@ export function Hero() {
 
           {/* Medallón de oro líquido */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, filter: "blur(14px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.3, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="relative mx-auto w-[68%] max-w-xs lg:col-span-5 lg:w-full lg:max-w-none"
           >

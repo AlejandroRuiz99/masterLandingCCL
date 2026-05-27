@@ -9,3 +9,4 @@ dist-ssr
 .playwright-mcp
 *.log
 .atl
+*.tsbuildinfo

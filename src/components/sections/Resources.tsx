@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Download } from "lucide-react";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Modal } from "../ui/Modal";
 import { LeadForm } from "../LeadForm";
@@ -8,15 +8,8 @@ import { resources, type Resource } from "@/data/resources";
 import { blurReveal, staggerContainer, viewportOnce } from "@/lib/animations";
 import { cn } from "@/lib/utils";
 
-// Layout bento: las piezas "ancla" ocupan más espacio que las secundarias.
-const spans = [
-  "lg:col-span-4",
-  "lg:col-span-2",
-  "lg:col-span-2",
-  "lg:col-span-4",
-  "lg:col-span-3",
-  "lg:col-span-3",
-];
+// Layout bento: el modelo descargable ocupa toda la fila y las dos herramientas debajo.
+const spans = ["lg:col-span-6", "lg:col-span-3", "lg:col-span-3"];
 
 export function Resources() {
   const [selected, setSelected] = useState<Resource | null>(null);
@@ -42,7 +35,7 @@ export function Resources() {
           className="mt-14 grid grid-cols-1 gap-4 lg:grid-cols-6"
         >
           {resources.map((r, i) => {
-            const wide = !spans[i].includes("span-2");
+            const wide = !spans[i]?.includes("span-2");
             return (
               <motion.button
                 key={r.id}
@@ -88,7 +81,11 @@ export function Resources() {
 
                 <span className="mt-auto flex items-center gap-2 pt-7 text-sm font-medium text-gold">
                   {r.kind === "tool" ? "Acceder gratis" : "Descargar gratis"}
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  {r.kind === "download" ? (
+                    <Download className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" />
+                  ) : (
+                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  )}
                 </span>
               </motion.button>
             );

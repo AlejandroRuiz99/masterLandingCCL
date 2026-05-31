@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
-import { Check, Loader2, Mail, ArrowUpRight } from "lucide-react";
+import { Check, Loader2, Mail, ArrowUpRight, Download } from "lucide-react";
 import { Button } from "./ui/Button";
 import { leadSchema, type LeadInput } from "@/lib/schema";
 import type { Resource } from "@/data/resources";
@@ -21,6 +21,7 @@ const inputCls =
 export function LeadForm({ resource, onDone }: LeadFormProps) {
   const [status, setStatus] = useState<Status>("idle");
   const isTool = resource.kind === "tool";
+  const isDownload = resource.kind === "download";
   const {
     register,
     handleSubmit,
@@ -60,13 +61,22 @@ export function LeadForm({ resource, onDone }: LeadFormProps) {
           <Check className="h-8 w-8" strokeWidth={2.5} />
         </motion.div>
         <h3 className="mt-6 font-display text-2xl">
-          {isTool ? "¡Ya tienes acceso!" : "¡Recurso en camino!"}
+          {isTool
+            ? "¡Ya tienes acceso!"
+            : isDownload
+            ? "¡Tu modelo está listo!"
+            : "¡Recurso en camino!"}
         </h3>
         <p className="mt-3 text-pretty text-sm leading-relaxed text-bone/60">
           {isTool ? (
             <>
               Abre <span className="text-gold">{resource.title}</span> ahora mismo.
               También te dejamos el enlace en tu correo.
+            </>
+          ) : isDownload ? (
+            <>
+              Descarga <span className="text-gold">{resource.title}</span> y empieza a
+              rellenarlo. También te lo dejamos en tu correo.
             </>
           ) : (
             <>
@@ -92,6 +102,30 @@ export function LeadForm({ resource, onDone }: LeadFormProps) {
               Cerrar
             </button>
           </>
+        ) : isDownload && resource.file ? (
+          <>
+            <Button
+              className="mt-7 w-full"
+              size="lg"
+              onClick={() => {
+                const a = document.createElement("a");
+                a.href = resource.file!;
+                a.download = "";
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+              }}
+            >
+              Descargar el modelo
+              <Download className="h-4 w-4" />
+            </Button>
+            <button
+              onClick={onDone}
+              className="mt-3 text-sm text-bone/50 transition-colors hover:text-bone"
+            >
+              Cerrar
+            </button>
+          </>
         ) : (
           <Button className="mt-7 w-full" size="lg" onClick={onDone}>
             Perfecto, cerrar
@@ -108,12 +142,18 @@ export function LeadForm({ resource, onDone }: LeadFormProps) {
           {resource.category}
         </div>
         <h3 className="text-pretty font-display text-xl leading-snug">
-          {isTool ? "Accede gratis a:" : "Recibe gratis:"}{" "}
+          {isTool
+            ? "Accede gratis a:"
+            : isDownload
+            ? "Descarga gratis:"
+            : "Recibe gratis:"}{" "}
           <span className="accent">{resource.title}</span>
         </h3>
         <p className="mt-2 text-sm text-bone/50">
           {isTool
             ? "Déjanos tus datos y accede al instante a la herramienta."
+            : isDownload
+            ? "Déjanos tus datos y descarga el modelo al instante."
             : "Déjanos tus datos y te lo enviamos al instante por email."}
         </p>
       </div>
@@ -198,6 +238,10 @@ export function LeadForm({ resource, onDone }: LeadFormProps) {
           ) : isTool ? (
             <>
               <ArrowUpRight className="h-4 w-4" /> Acceder gratis
+            </>
+          ) : isDownload ? (
+            <>
+              <Download className="h-4 w-4" /> Descargar gratis
             </>
           ) : (
             <>

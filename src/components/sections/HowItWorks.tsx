@@ -15,8 +15,8 @@ const steps = [
   },
   {
     n: "03",
-    title: "Recíbelo al instante",
-    text: "Te llega al correo al momento, listo para leer y aplicar a tu caso.",
+    title: "Descárgalo al instante",
+    text: "Se descarga directamente en tu dispositivo, listo para leer y aplicar a tu caso.",
   },
 ];
 
@@ -34,7 +34,7 @@ export function HowItWorks() {
                   Tu recurso, en <span className="accent">tres pasos</span>
                 </>
               }
-              subtitle="Sin llamadas comerciales ni trámites. Eliges, pides y lo tienes en tu correo."
+              subtitle="Sin llamadas comerciales ni trámites. Eliges, dejas tus datos y lo descargas al momento."
             />
           </div>
 

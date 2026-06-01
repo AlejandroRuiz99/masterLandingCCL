@@ -71,12 +71,12 @@ export function LeadForm({ resource, onDone }: LeadFormProps) {
           {isTool ? (
             <>
               Abre <span className="text-gold">{resource.title}</span> ahora mismo.
-              También te dejamos el enlace en tu correo.
             </>
           ) : isDownload ? (
             <>
-              Descarga <span className="text-gold">{resource.title}</span> y empieza a
-              rellenarlo. También te lo dejamos en tu correo.
+              Pulsa el botón y{" "}
+              <span className="text-gold">{resource.title}</span> se descargará
+              directamente en tu dispositivo.
             </>
           ) : (
             <>
@@ -153,7 +153,7 @@ export function LeadForm({ resource, onDone }: LeadFormProps) {
           {isTool
             ? "Déjanos tus datos y accede al instante a la herramienta."
             : isDownload
-            ? "Déjanos tus datos y descarga el modelo al instante."
+            ? "Déjanos tus datos y el modelo se descargará directamente en tu dispositivo."
             : "Déjanos tus datos y te lo enviamos al instante por email."}
         </p>
       </div>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://recursos.compromisolegal.es/sitemap.xml

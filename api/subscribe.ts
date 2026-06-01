@@ -18,7 +18,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const supabaseKey = process.env.SUPABASE_KEY;
   if (!supabaseUrl || !supabaseKey) {
     console.error("Supabase env vars no configuradas");
     return res.status(500).json({ error: "Configuración del servidor incompleta" });

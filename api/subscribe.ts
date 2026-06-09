@@ -44,6 +44,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     tematica,
     recurso,
     consent,
+    fuente: "LandingPage",
   });
 
   if (error) {

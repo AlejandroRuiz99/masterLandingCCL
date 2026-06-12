@@ -43,6 +43,22 @@ export const resources: Resource[] = [
     format: "Modelo Word editable",
   },
   {
+    id: "formulario-jubilacion-parcial-administracion",
+    category: "Jubilaciones y Pensiones",
+    icon: FileText,
+    kind: "download",
+    file: "/recursos/formulario-jubilacion-parcial-personal-administracion.pdf",
+    title: "Formulario oficial de jubilación parcial (personal de administración)",
+    description:
+      "Modelo oficial publicado en el BOE para solicitar la jubilación parcial del personal de administración. Solo tienes que cumplimentarlo con tus datos y presentarlo.",
+    highlights: [
+      "Modelo oficial vigente publicado en el BOE",
+      "Incluye datos personales, puesto y solicitud",
+      "Listo para imprimir, firmar y presentar",
+    ],
+    format: "Formulario oficial PDF",
+  },
+  {
     id: "complemento-pension",
     category: "Jubilaciones y Pensiones",
     icon: Calculator,

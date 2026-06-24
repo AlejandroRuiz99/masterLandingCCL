@@ -59,6 +59,22 @@ export const resources: Resource[] = [
     format: "Formulario oficial PDF",
   },
   {
+    id: "comunicacion-salida-extranjero",
+    category: "Seguridad Social",
+    icon: FileText,
+    kind: "download",
+    file: "/recursos/comunicacion-salida-extranjero.pdf",
+    title: "Comunicación de salida al extranjero (Seguridad Social)",
+    description:
+      "Modelo oficial para comunicar a la Seguridad Social tu salida al extranjero y conservar tu prestación o pensión sin sustos. Solo tienes que rellenar tus datos y presentarlo.",
+    highlights: [
+      "Modelo oficial vigente de la Seguridad Social",
+      "Evita la suspensión de la prestación durante el viaje",
+      "Listo para imprimir, firmar y presentar",
+    ],
+    format: "Formulario oficial PDF",
+  },
+  {
     id: "complemento-pension",
     category: "Jubilaciones y Pensiones",
     icon: Calculator,

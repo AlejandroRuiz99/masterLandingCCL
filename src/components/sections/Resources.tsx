@@ -8,8 +8,8 @@ import { resources, type Resource } from "@/data/resources";
 import { blurReveal, staggerContainer, viewportOnce } from "@/lib/animations";
 import { cn } from "@/lib/utils";
 
-// Layout bento: el modelo descargable ocupa toda la fila y las dos herramientas debajo.
-const spans = ["lg:col-span-6", "lg:col-span-3", "lg:col-span-3"];
+// Bento layout: the first resource is featured full-width, the rest sit two per row.
+const spanFor = (index: number) => (index === 0 ? "lg:col-span-6" : "lg:col-span-3");
 
 export function Resources() {
   const [selected, setSelected] = useState<Resource | null>(null);
@@ -35,7 +35,6 @@ export function Resources() {
           className="mt-14 grid grid-cols-1 gap-4 lg:grid-cols-6"
         >
           {resources.map((r, i) => {
-            const wide = !spans[i]?.includes("span-2");
             return (
               <motion.button
                 key={r.id}
@@ -45,7 +44,7 @@ export function Resources() {
                 transition={{ type: "spring", stiffness: 280, damping: 24 }}
                 className={cn(
                   "grain group relative flex flex-col overflow-hidden rounded-2xl border border-gold/12 bg-ink-800 p-7 text-left transition-colors duration-500 hover:border-gold/40",
-                  spans[i]
+                  spanFor(i)
                 )}
               >
                 <div className="flex items-start justify-between gap-4">
@@ -65,19 +64,17 @@ export function Resources() {
                   {r.description}
                 </p>
 
-                {wide && (
-                  <ul className="mt-5 flex flex-col gap-2">
-                    {r.highlights.map((h) => (
-                      <li
-                        key={h}
-                        className="flex items-start gap-2.5 text-sm text-bone/45"
-                      >
-                        <span className="mt-[0.45rem] h-1 w-1 shrink-0 rounded-full bg-gold" />
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                <ul className="mt-5 flex flex-col gap-2">
+                  {r.highlights.map((h) => (
+                    <li
+                      key={h}
+                      className="flex items-start gap-2.5 text-sm text-bone/45"
+                    >
+                      <span className="mt-[0.45rem] h-1 w-1 shrink-0 rounded-full bg-gold" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
 
                 <span className="mt-auto flex items-center gap-2 pt-7 text-sm font-medium text-gold">
                   {r.kind === "tool" ? "Acceder gratis" : "Descargar gratis"}

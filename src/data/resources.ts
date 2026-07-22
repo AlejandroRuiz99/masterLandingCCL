@@ -75,6 +75,38 @@ export const resources: Resource[] = [
     format: "Formulario oficial PDF",
   },
   {
+    id: "informativo-jubilacion-nacional",
+    category: "Jubilaciones y Pensiones",
+    icon: FileText,
+    kind: "download",
+    file: "/recursos/informativo-jubilacion-nacional.pdf",
+    title: "Solicitud de información previa a la jubilación",
+    description:
+      "Modelo oficial del INSS para pedir tu informe previo de jubilación: conoce con antelación la fecha y la pensión estimada antes de dar el paso. Solo tienes que rellenar tus datos y presentarlo.",
+    highlights: [
+      "Modelo oficial del Instituto Nacional de la Seguridad Social",
+      "Incluye opción de jubilación parcial con reducción de jornada",
+      "Listo para imprimir, firmar y presentar",
+    ],
+    format: "Formulario oficial PDF",
+  },
+  {
+    id: "solicitud-cotizaciones-extranjero",
+    category: "Jubilaciones y Pensiones",
+    icon: FileText,
+    kind: "download",
+    file: "/recursos/solicitud-informacion-cotizaciones-extranjero.pdf",
+    title: "Solicitud de información sobre cotizaciones en el extranjero",
+    description:
+      "Modelo oficial del INSS para conocer tus períodos cotizados en otros países al amparo de los reglamentos comunitarios o convenios bilaterales. Imprescindible si has trabajado fuera de España.",
+    highlights: [
+      "Modelo oficial del Instituto Nacional de la Seguridad Social",
+      "Recoge tus empresas y períodos trabajados en cada país",
+      "Listo para imprimir, firmar y presentar",
+    ],
+    format: "Formulario oficial PDF",
+  },
+  {
     id: "complemento-pension",
     category: "Jubilaciones y Pensiones",
     icon: Calculator,
